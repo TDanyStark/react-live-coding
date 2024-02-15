@@ -2,12 +2,28 @@ import React from 'react'
 import Spinner from 'components/Spinner'
 import ListOfGifs from 'components/ListOfGifs'
 import {useGifs} from 'hooks/useGifs'
+import useNearScreen from 'hooks/useNearScreen'
 
 export default function SearchResults ({ params }) {
   const { keyword } = params
   const { loading, gifs, setPage } = useGifs({ keyword })
+  const externalRef = React.useRef(null)
+  const {isNearScreen} = useNearScreen({
+    distance: '100px', externalRef: loading ? null : externalRef, mustDisconnect: false
+  })
 
-  const handleNextPage = () => setPage(prevPage => prevPage + 1)
+
+  React.useEffect(function () {
+    const handleNextPage = () => {
+      console.log('handleNextPage');
+      setPage(prevPage => prevPage + 1)
+    }
+
+    if (isNearScreen) {
+      handleNextPage()
+    }
+  }, [isNearScreen, setPage])
+
 
   return <>
     {loading
@@ -17,9 +33,9 @@ export default function SearchResults ({ params }) {
           {decodeURI(keyword)}
         </h3>
         <ListOfGifs gifs={gifs} />
+        <div id="visor" ref={externalRef}></div>
       </>
     }
     <br />
-    <button onClick={handleNextPage}>Get next page</button>
   </>
 }

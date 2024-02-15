@@ -3,15 +3,12 @@
 }
 
 .ListOfGifs {
-  column-count: var(--results-columns);
-  column-gap: .5em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   min-height: 100vh;
 }
 
 .ListOfGifs-item {
-  -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
-  page-break-inside: avoid; /* Firefox */
-  break-inside: avoid; /* IE 10+ */
   background-color: #eee;
   display: inline-block;
   width: 100%;
