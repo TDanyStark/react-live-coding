@@ -8,6 +8,7 @@ import {GifsContextProvider} from './context/GifsContext'
 import { Link, Route } from "wouter"
 
 const HomePage = React.lazy(() => import('./pages/Home'))
+// desde github
 
 
 export default function App() {
