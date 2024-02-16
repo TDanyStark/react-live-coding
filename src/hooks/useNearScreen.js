@@ -11,6 +11,7 @@ export default function useNearScreen ({ distance = '0px', externalRef, mustDisc
 
     const onChange = (entries, observer) => {
       const el = entries[0]
+      console.log(el.isIntersecting);
       if (el.isIntersecting) {
         setShow(true)
         if (mustDisconnect) observer.disconnect()

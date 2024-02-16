@@ -24,6 +24,7 @@ export function useGifs ({ keyword } = { keyword: null }) {
         // guardamos la keyword en el localStorage
         localStorage.setItem('lastKeyword', keywordToUse)
       })
+    
   }, [keyword, keywordToUse, setGifs])
 
   useEffect(function () {
