@@ -10,7 +10,7 @@ export default function SearchResults ({ params }) {
   const { loading, gifs, setPage } = useGifs({ keyword })
   const externalRef = React.useRef(null)
   const {isNearScreen} = useNearScreen({
-    distance: '100px', externalRef: loading ? null : externalRef, mustDisconnect: false
+    externalRef: loading ? null : externalRef, mustDisconnect: false
   })
    
   // const handleNextPage = () => {
