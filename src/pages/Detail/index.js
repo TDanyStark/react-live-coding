@@ -13,7 +13,7 @@ export default function Detail ({ params }) {
 
   return <>
       <Helmet>
-        <title>{title} || Giffy</title>
+        <title>{title} || DA Giffy</title>
         <meta name="description" content={`Detail of   ${title}`} />
 
       </Helmet>
