@@ -4,6 +4,7 @@ import ListOfGifs from 'components/ListOfGifs'
 import {useGifs} from 'hooks/useGifs'
 import useNearScreen from 'hooks/useNearScreen'
 import debounce from 'just-debounce-it'
+import {Helmet} from 'react-helmet'
 
 export default function SearchResults ({ params }) {
   const { keyword } = params
@@ -32,11 +33,24 @@ export default function SearchResults ({ params }) {
     }
   }, [debounceHandleNextPage, isNearScreen])
 
+  const title = gifs ? `${gifs.length} resultados de ${keyword}` : ''
+
 
   return <>
     {loading
-      ? <Spinner />
+      ? <>
+        <Helmet>
+          <title>Cargando.... || Giffy</title>
+          <meta name="description" content="Cargando...." />
+        </Helmet>
+        <Spinner />
+      
+      </>
       : <>
+        <Helmet>
+          <title>{title} || Giffy</title>
+          <meta name="description" content={title} />
+        </Helmet>
         <h3 className="App-title">
           {decodeURI(keyword)}
         </h3>

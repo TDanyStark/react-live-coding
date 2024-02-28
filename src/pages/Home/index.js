@@ -4,6 +4,7 @@ import ListOfGifs from 'components/ListOfGifs'
 import {useGifs} from 'hooks/useGifs'
 import TrendingSearches from 'components/TrendingSearches'
 import SearchForm from "components/SearchForm"
+import {Helmet} from 'react-helmet'
 
 export default function Home() {
   const [,pushLocation] = useLocation()
@@ -16,6 +17,11 @@ export default function Home() {
 
   return (
     <>
+      <Helmet>
+        <title>Home || Giffy</title>
+        <meta name="description" content={`This is the HOME`} />
+
+      </Helmet>
       <SearchForm onSubmit={handleSubmit} />
       <div className="App-main">
         <div className="App-results">

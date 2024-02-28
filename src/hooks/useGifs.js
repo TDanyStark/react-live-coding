@@ -21,6 +21,7 @@ export function useGifs ({ keyword } = { keyword: null }) {
       .then(gifs => {
         setGifs(gifs)
         setLoading(false)
+        console.log("peticion");
         // guardamos la keyword en el localStorage
         localStorage.setItem('lastKeyword', keywordToUse)
       })
